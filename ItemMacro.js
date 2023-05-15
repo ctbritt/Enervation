@@ -8,8 +8,7 @@ console.log("item:", item);
 let tokenDoc = canvas.scene.tokens.get(args[args.length - 1].tokenId);
 console.log("tokenDoc:", tokenDoc);
 
-// If the first argument is "on", add the Enervation effect to the token
-if (args[0] === "on") {
+async function applyEnervationEffect(tokenDoc, item) {
   // Prepare updates for the token, including spell details and effects
   const updates = {
 	embedded: {
@@ -66,7 +65,15 @@ if (args[0] === "on") {
 
   // Apply the updates to the token
   await warpgate.mutate(tokenDoc, updates);
-} else if (args[0] === "off") {
-  // If the first argument is "off", remove the Enervation effect from the token
+}
+
+async function removeEnervationEffect(tokenDoc) {
+  // Remove the Enervation effect from the token
   await warpgate.revert(tokenDoc);
+}
+
+if (args[0] === "on") {
+  applyEnervationEffect(tokenDoc, item);
+} else if (args[0] === "off") {
+  removeEnervationEffect(tokenDoc);
 }
