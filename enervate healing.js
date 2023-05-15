@@ -2,6 +2,7 @@
 
 // Get the last argument passed to the macro
 const lastArg = args[args.length - 1];
+;console.log("lastArg:", lastArg);
 
 // If there are no hit targets, return an empty object
 if (lastArg.hitTargets.length === 0) return {};
@@ -15,7 +16,7 @@ let target = canvas.tokens.get(lastArg.hitTargets[0].id);
 
 // Set healing type and calculate half of the damage total
 let healingType = "healing";
-let damageTotal = Math.floor(lastArg.damageTotal / 2);
+let damageTotal = Math.floor(lastArg.damageList[0].appliedDamage / 2);
 
 // Create a new Roll object with the half damage total
 let damageRoll = new Roll(`${damageTotal}`).evaluate({ async: false });
