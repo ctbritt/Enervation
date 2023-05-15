@@ -1,3 +1,5 @@
+// put this in the Item Macro of the Enervation item
+
 let item = args[ 1 ];
 console.log( "item:", item );
 

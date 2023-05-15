@@ -1,3 +1,5 @@
+// This should is a hotbar macro
+
 const lastArg = args[ args.length - 1 ];
 if ( lastArg.hitTargets.length === 0 ) return {};
 let actorD = game.actors.get( lastArg.actor._id );
